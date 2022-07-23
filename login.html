@@ -1,1 +1,29 @@
-
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration form</title>
+        <link rel="stylesheet" href="connect.css">
+</head>
+<body bgcolor="FBB917">
+    <h1>Bargain Basement Real Estate Connections</h1>
+    <div><h2>Login</h2>
+      <form action='conn2.php' method="POST">
+         <label for="first_name">First Name:</label><br/>
+         <input type='text' name='first_name' id="first_name" required/> <br/><br/>
+         <label for="last_name">Last Name:</label><br/>
+         <input type='text' name='last_name' id="last_name" required/> <br/><br/>
+         <label for="password">Password:</label><br/>
+         <input type='password' name='password' id="password" required/> <br/><br/>
+<!--        <div class="form-check">
+            <input class="form-check-input" name="update" type="checkbox" value="yes" id="update">
+            <label class="form-check-label" for="update">
+                Update
+            </label> -->
+         </div>
+         <input type='submit' name='submit' id="submit">
+      </form>
+    </div>
+</body>
+</html>
