@@ -31,18 +31,18 @@
              && isset($_POST['last_name']) 
              && isset($_POST['email'])
              && isset($_POST['phone'])
+             && isset($_POST['user_type'])
              && isset($_POST['password'])
              && isset($_POST['cpassword'])) {
 
                 echo "Post passed <br/>"; //debug
                 $first_name = $_POST['first_name'];
                 $last_name = $_POST['last_name'];
-                $user_type = "Buyer";
+                $user_type = $_POST["user_type"];
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $password = MD5($_POST['password']);
                 $cpassword = MD5($_POST['cpassword']);
-
 //                echo "<br/>fname ".$first_name;
 //                echo "<br/>lname ".$last_name;
 //                echo "<br/>user_type ".$user_type;
