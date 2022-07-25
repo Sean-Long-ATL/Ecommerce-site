@@ -5,3 +5,11 @@ table, td {
    border-collapse: collapse;
    padding: 2px;
 }
+
+div.tbl {
+   background-color: ivory;
+}
+
+body {
+   background-color: tan;
+}

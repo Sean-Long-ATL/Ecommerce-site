@@ -6,7 +6,7 @@
         <title>Registration form</title>
         <link rel="stylesheet" href="connect.css">
 </head>
-<body bgcolor="FBB917">
+<body >
 
 <?php
     $host = 'localhost';
