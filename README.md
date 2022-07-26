@@ -132,3 +132,7 @@ posts to
 - update_property.php
 
 $$update_property.php - saves/updates data to the properties table.
+
+$$listusers.php - utility file that displays contents of the users table.
+
+$$listproperties.php - utility file that displays contents of the properties table.
