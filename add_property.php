@@ -20,12 +20,12 @@
            echo "Count not connect to server<br/> ";
                die ("Connection failed: " . $conn->connect_error);
         }
-        else {
-           echo "Connection established<br/>";
-        }
+//        else {
+//           echo "Connection established<br/>";
+//        }
 
-        print_r($_POST); //debug
-        echo "<br/>";    // debug
+        //print_r($_POST); //debug
+        //echo "<br/>";    // debug
         if (    isset($_POST['owner']) 
              && isset($_POST['name']) 
              && isset($_POST['st_address']) 
@@ -39,7 +39,7 @@
              && isset($_POST['price'])) {
 
 
-            echo "Post passed <br/>"; //debug
+            //echo "Post passed <br/>"; //debug
             $owner = $_POST['owner'];
             $name = $_POST['name'];
             $st_address = $_POST['st_address'];
@@ -52,7 +52,7 @@
             $num_baths = $_POST['num_baths'];
             $price = $_POST['price'];
  
-            echo "Posted data extraction passed <br/>"; //debug
+            //echo "Posted data extraction passed <br/>"; //debug
             $operation = 'INSERT';
             if (strlen($_POST['picture']) > 3) {
                $picture = $_POST['picture'];
@@ -60,16 +60,10 @@
             else {
                $picture = NULL;
             }
-            echo "Picture :$picture:<br/>";
             $sql= "INSERT INTO $table (owner, name, st_address, city, state, zip, build_date, sq_footage, num_bedrooms, num_baths, price, picture)";
             $sql = $sql . " VALUES ($owner, '$name', '$st_address', '$city', '$state', $zip, '$build_date', ";
             $sql = $sql . "$sq_footage, $num_bedrooms, $num_baths, $price, '$picture') ";
-//            }
-//            else {
-//                $sql= "INSERT INTO $table (owner, name, st_address, city, state, zip, build_date, sq_footage, num_bedrooms, num_baths, price, picture ) ";
-//                $sql = $sql . " VALUES ($owner, '$name', '$st_address', '$city', '$state', $zip, '$build_date', ";
-//                $sql = $sql . "$sq_footage, $num_bedrooms, $num_baths, $price, NULL) ";
-//            }
+
             $operation = 'INSERT';
 
          
@@ -79,12 +73,8 @@
             else {
                $query = False;
             }
-            echo "$operation passed <br/>"; //debug
 
-            if ($query) {
-                echo $operation . ' successful <br/>';
-            }
-            else {
+            if (!$query) {
                 echo 'Error Occurred with ' .$operation .' <br/> ';
                 echo $sql. '<br/>';
             }
@@ -93,8 +83,7 @@
            if (   
                 isset($_POST['build_date']) 
              && isset($_POST['sq_footage']) 
-             && isset($_POST['num_bedrooms']) 
-) {
+             && isset($_POST['num_bedrooms']) ) {
                echo "<br/>Set: build_date, sq_foot, num_bedrooms<br/>";
              }
              else {

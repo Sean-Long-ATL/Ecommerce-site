@@ -16,15 +16,15 @@
     $table = 'properties';
     $conn= mysqli_connect( $host, $user, $passw, $dbname);
     if ($conn->connect_error) {
-       echo "Count not connect to server \n";
+       echo "Count not connect to server<br/>";
            die ("Connection failed: " . $conn->connect_error);
     }
     else {
-       echo "Connection established\n";
+       echo "Connection established<br/>";
     }
 
         // Check contents of db
-    $sql= "SELECT id, owner, name, st_address, city , state, zip, build_date, sq_footage, num_bedrooms, num_baths, price, picture FROM " . $table ;
+    $sql= "SELECT * FROM  $table ";
 //    echo $sql . "<br/>";
     $result = mysqli_query($conn,$sql);
     echo "This table for debugging <br/>";

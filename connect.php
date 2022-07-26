@@ -44,14 +44,6 @@
                 $phone = $_POST['phone'];
                 $password = MD5($_POST['password']);
                 $cpassword = MD5($_POST['cpassword']);
-//                echo "<br/>fname ".$first_name;
-//                echo "<br/>lname ".$last_name;
-//                echo "<br/>user_type ".$user_type;
-//                echo "<br/>email ".$email;
-//                echo "<br/>phone ".$phone;
-//                echo "<br/>password  :".$password;
-//                echo "<br/>cpassword :".$cpassword."<br/>";
- 
                 
 //               Update 
 //            if ($_POST['update'] == 'yes') {
@@ -65,13 +57,8 @@
 //                   echo "<br/>";
 //                   $sql= "UPDATE " . $table . " SET email='$email', phone='$phone', password='$password' WHERE name='$name'";
 //               }
-//               else {
-//                   echo "No records updated, ".$name." not found<br/>";
-//                   $sql= "";
-//               }
- 
 
-                $operation = 'UPDATE';
+                $operation = 'INSERT';
 //            }
 //               Insert
 //            else {
