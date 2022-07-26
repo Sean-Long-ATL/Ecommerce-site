@@ -1,7 +1,26 @@
 
 table, td {
    border: 1px solid black;
-   background-color: ivory;
    border-collapse: collapse;
-   padding: 2px;
+   margin: 10px;
+}
+
+div.tbl {
+   background-color: ivory;
+   width: 50%;
+   padding: 5px;
+}
+
+
+body {
+   background-color: tan;
+}
+
+
+input, label {
+   margin: 5px;
+}
+
+.greyed {
+    background-color: gray;
 }

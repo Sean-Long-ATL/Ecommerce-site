@@ -6,7 +6,7 @@
         <title>Registration form</title>
         <link rel="stylesheet" href="connect.css">
 </head>
-<body bgcolor="FBB917">
+<body >
 
 <?php
     $host = 'localhost';
@@ -27,6 +27,7 @@
 //        print_r($_POST); //debug
 //        echo "<br/>";    // debug
         if (isset($_POST['first_name']) 
+             && isset($_POST['user_name']) 
              && isset($_POST['first_name']) 
              && isset($_POST['last_name']) 
              && isset($_POST['email'])
@@ -35,22 +36,14 @@
              && isset($_POST['cpassword'])) {
 
                 echo "Post passed <br/>"; //debug
+                $user_name = $_POST['user_name'];
                 $first_name = $_POST['first_name'];
                 $last_name = $_POST['last_name'];
-                $user_type = "Buyer";
+                $user_type = $_POST["user_type"];
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $password = MD5($_POST['password']);
                 $cpassword = MD5($_POST['cpassword']);
-
-//                echo "<br/>fname ".$first_name;
-//                echo "<br/>lname ".$last_name;
-//                echo "<br/>user_type ".$user_type;
-//                echo "<br/>email ".$email;
-//                echo "<br/>phone ".$phone;
-//                echo "<br/>password  :".$password;
-//                echo "<br/>cpassword :".$cpassword."<br/>";
- 
                 
 //               Update 
 //            if ($_POST['update'] == 'yes') {
@@ -64,17 +57,12 @@
 //                   echo "<br/>";
 //                   $sql= "UPDATE " . $table . " SET email='$email', phone='$phone', password='$password' WHERE name='$name'";
 //               }
-//               else {
-//                   echo "No records updated, ".$name." not found<br/>";
-//                   $sql= "";
-//               }
- 
 
-                $operation = 'UPDATE';
+                $operation = 'INSERT';
 //            }
 //               Insert
 //            else {
-               $sql= "INSERT INTO " . $table . " (first_name, last_name, password, user_type, email, phone_number) VALUES ('$first_name', '$last_name','$password', '$user_type', '$email', '$phone')";
+               $sql= "INSERT INTO " . $table . " (user_name, first_name, last_name, password, user_type, email, phone_number) VALUES ('$user_name', '$first_name', '$last_name','$password', '$user_type', '$email', '$phone')";
                $operation = 'INSERT';
 //            }
 
@@ -90,34 +78,38 @@
             }
             else {
                 echo 'Error Occurred with ' .$operation .' <br/> ';
+                echo 'Possible Dulicate user_name  <br/> ';
+                echo $sql. '<br/>';
             }
         }
 
+        if ($query) {
             // Check contents of db
-        $sql= "SELECT user_number, first_name, last_name, password , user_type, email, phone_number FROM " . $table ;
-        $result = mysqli_query($conn,$sql);
-        echo "This table for debugging <br/>";
-        if ($result->num_rows > 0) {
-            echo "<table><thead>";
-            echo "<tr> <th>Primary Key</th> <th>First Name</th> <th>Last Name</th> <th>  password </th> <th> Cust Type </th> <th> Email </th> <th> Phone</th> </tr>";
-            echo "</thead><tbody>";
-            while ($row = mysqli_fetch_array($result)) {
-               echo "<tr>";
-                  echo "<td> " . $row['user_number'] . "</td>";     
-                  echo "<td> " . $row['first_name'] . "</td>";     
-                  echo "<td> " . $row['last_name'] . "</td>";     
-                  echo "<td> " . $row['password'] . "</td>";     
-                  echo "<td> " . $row['user_type'] . "</td>";
-                  echo "<td> " . $row['email'] . "</td>";     
-                  echo "<td> " . $row['phone_number'] . "</td>";     
-               echo "</tr>";
+            $sql= "SELECT user_number, user_name, first_name, last_name, password , user_type, email, phone_number FROM " . $table ;
+            $result = mysqli_query($conn,$sql);
+            echo "This table for debugging <br/>";
+            if ($result->num_rows > 0) {
+                echo "<table><thead>";
+                echo "<tr> <th>Primary Key</th> <th>Username</th> <th>First Name</th> <th>Last Name</th> <th>  password </th> <th> Cust Type </th> <th> Email </th> <th> Phone</th> </tr>";
+                echo "</thead><tbody>";
+                while ($row = mysqli_fetch_array($result)) {
+                   echo "<tr>";
+                      echo "<td> " . $row['user_number'] . "</td>";     
+                      echo "<td> " . $row['user_name'] . "</td>";     
+                      echo "<td> " . $row['first_name'] . "</td>";     
+                      echo "<td> " . $row['last_name'] . "</td>";     
+                      echo "<td> " . $row['password'] . "</td>";     
+                      echo "<td> " . $row['user_type'] . "</td>";
+                      echo "<td> " . $row['email'] . "</td>";     
+                      echo "<td> " . $row['phone_number'] . "</td>";     
+                   echo "</tr>";
+                }
+                echo "</tbody></table>";
             }
-            echo "</tbody></table>";
+            else {
+                echo "Select failed";
+            }
         }
-        else {
-            echo "Select failed";
-        }
-
 
         $conn->close();
     }
