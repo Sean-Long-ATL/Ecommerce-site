@@ -64,10 +64,10 @@
            $picture = $row['picture'];
               echo "<form action='update_property.php' method='POST'>";
                  echo "<input type='text' name='id' id='id' value='$id' hidden />";
-                 echo "<label for='owner'>Your User ID:</label><br/>";
-                 echo "<input type='text' name='owner' id='owner' value='$owner'  /> <br/><br/>"; // readonly
-                 echo "<label for='name'>Property Name:</label><br/>";
-                 echo "<input type='text' name='name' id='name' value='$name' /> <br/><br/>";
+                 echo "<label for='owner'>Your User ID: [readonly] </label><br/>";
+                 echo "<input type='text' name='owner' id='owner' value='$owner' class='greyed' readonly /> <br/><br/>"; // readonly
+                 echo "<label for='name'>Property Name: [readonly] </label><br/>";
+                 echo "<input type='text' name='name' id='name' value='$name' class='greyed' readonly /> <br/><br/>";
                  echo "<label for='st_address'>Street Address:</label><br/>";
                  echo "<input type='text' name='st_address' id='st_address' value='$st_address' /> <br/><br/>"; //readonly
                  echo "<label for='city'>City:</label><br/>";
@@ -88,7 +88,7 @@
                  echo "<input type='text' name='price' id='price' value='$price' /> <br/><br/>";
                  echo "<label for='picture'>Picture:  optional</label><br/>";
                  echo "<input type='text' name='picture' id='picture' value='$picture' /> <br/><br/>";
-                 echo "<input type='submit' name='submit' id='submit'/>";
+                 echo "<input type='submit' name='submit' id='submit'/><br/><br/>";
               echo "</form>";
 
         }
