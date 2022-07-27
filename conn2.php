@@ -6,7 +6,7 @@
         <title>Registration form</title>
         <link rel="stylesheet" href="connect.css">
 </head>
-<body bgcolor="FBB917">
+<body >
 
 <?php
     $host = 'localhost';
@@ -26,20 +26,17 @@
 
 //        print_r($_POST); //debug
 //        echo "<br/>";    // debug
-        if (isset($_POST['first_name']) 
-             && isset($_POST['first_name']) 
-             && isset($_POST['last_name']) 
+        if (isset($_POST['user_name']) 
              && isset($_POST['password'])) {
 
             echo "Post passed <br/>"; //debug
-            $first_name = $_POST['first_name'];
-            $last_name = $_POST['last_name'];
+            $user_name = $_POST['user_name'];
             $user_type = "Buyer";
             $password = MD5($_POST['password']);
 
 
             // Check contents of db
-            $sql= "SELECT user_number, password FROM " . $table . " WHERE first_name = '".$first_name  ."' and last_name = '".$last_name."'";
+            $sql= "SELECT user_number, password FROM " . $table . " WHERE user_name = '".$user_name ."'";
             echo $sql. " <br/>";
             $result = mysqli_query($conn,$sql);
             $pwd = "";

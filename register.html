@@ -6,10 +6,13 @@
         <title>Registration form</title>
         <link rel="stylesheet" href="connect.css">
 </head>
-<body bgcolor="FBB917">
+<body >
     <h1>Bargain Basement Real Estate Connections</h1>
     <div><h2>Registration</h2>
       <form action='connect.php' method="POST">
+    
+         <label for="user_name">User Name:</label><br/>
+         <input type='text' name='user_name' id="user_name" required/> <br/><br/>
          <label for="first_name">First Name:</label><br/>
          <input type='text' name='first_name' id="first_name" required/> <br/><br/>
          <label for="last_name">Last Name:</label><br/>
@@ -26,9 +29,17 @@
             <input class="form-check-input" name="update" type="checkbox" value="yes" id="update">
             <label class="form-check-label" for="update">
                 Update
-            </label> -->
-         </div>
-         <input type='submit' name='submit' id="submit">
+            </label>
+         </div> -->
+             <p>
+            <label for="user_type"> Account Type:</label><br/>
+            <select name="user_type" id="user_type">
+                <option > Buyer
+                <option> Seller
+                <option> Administrator
+            </select>
+            </p>
+	    <input type='submit' name='submit' id="submit">
       </form>
     </div>
 </body>

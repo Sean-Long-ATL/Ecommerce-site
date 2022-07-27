@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Property Entry form</title>
+        <link rel="stylesheet" href="connect.css">
+</head>
+<body >
+    <h1>Bargain Basement Real Estate Connections</h1>
+    <div><h2>Add Your Property</h2>
+      <form action='add_property.php' method="POST">
+    
+         <label for="owner">Your User ID:</label><br/>
+         <input type='text' name='owner' id="owner" required/> <br/><br/>
+         <label for="name">Property Name:</label><br/>
+         <input type='text' name='name' id="name" required/> <br/><br/>
+         <label for="st_address">Street Address:</label><br/>
+         <input type='text' name='st_address' id="st_address" required/> <br/><br/>
+         <label for="city">City:</label><br/>
+         <input type='text' name='city' id="city" required/> <br/><br/>
+         <label for="state">State:</label><br/>
+         <input type='text' name='state' id="state" required/> <br/><br/>
+         <label for="zip">Zip:</label><br/>
+         <input type='text' name='zip' id="zip" required/> <br/><br/>
+         <label for="build_date">Build Date:</label><br/>
+         <input type='text' name='build_date' id="build_date" required/> <br/><br/>
+         <label for="sq_footage">Sq Footage:</label><br/>
+         <input type='text' name='sq_footage' id="sq_footage" required/> <br/><br/>
+         <label for="num_bedrooms"># Bedrooms:</label><br/>
+         <input type='text' name='num_bedrooms' id="num_bedrooms" required/> <br/><br/>
+         <label for="num_baths">Baths:</label><br/>
+         <input type='text' name='num_baths' id="num_baths" required/> <br/><br/>
+         <label for="price">Price:</label><br/>
+         <input type='text' name='price' id="price" required/> <br/><br/>
+         <label for="picture">Picture:  optional</label><br/>
+         <input type='text' name='picture' id="picture" /> <br/><br/>
+	 <input type='submit' name='submit' id="submit">
+      </form>
+    </div>
+</body>
+</html>
