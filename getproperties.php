@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registration form</title>
         <link rel="stylesheet" href="connect.css">
+	<link rel="javascript" href="properties.js">
 </head>
 <body >
 <?php
@@ -78,10 +79,11 @@ echo "start";
     echo "</table>";
     $conn->close();
     echo "<script>";
-    echo "let prop_array = $rows;";
+    echo "</script>";
 ?>
     
-
+<script type="text/javascript">
+   var prop_array = <?php echo json_encode($rows); ?>;
 </script>
 
 </body>
