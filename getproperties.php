@@ -83,7 +83,7 @@ echo "start";
 ?>
     
 <script type="text/javascript">
-   var prop_array = "<?php echo $rows; ?>";
+   var prop_array = <?php echo json_encode($rows); ?>;
 </script>
 
 </body>
