@@ -52,6 +52,9 @@
 
             if ($pwd == $password) {
                echo "Login successful <br/>";
+               setcookie($user_name);
+               header('Location: https://codd.cs.gsu.edu/~gmurray2/PW/03/sellerDashboard.html');
+               exit();
             }
             else {
                echo "Login unsuccessful <br/>";

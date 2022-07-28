@@ -110,7 +110,7 @@
                 echo "Select failed";
             }
         }
-
+        header('Location: https://codd.cs.gsu.edu/~gmurray2/PW/03/login.html');
         $conn->close();
     }
     else {
