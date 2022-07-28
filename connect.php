@@ -83,6 +83,9 @@
             }
         }
 
+        header("Location: login.html");
+        exit();
+
         if ($query) {
             // Check contents of db
             $sql= "SELECT user_number, user_name, first_name, last_name, password , user_type, email, phone_number FROM " . $table ;
@@ -110,7 +113,7 @@
                 echo "Select failed";
             }
         }
-
+        header('Location: https://codd.cs.gsu.edu/~gmurray2/PW/03/login.html');
         $conn->close();
     }
     else {
