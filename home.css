@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
+  align-items: center;
+  text-align: center;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,8 +15,9 @@ nav{
   position: fixed;
   background: #FFA500;
   width: 100%;
-  padding: 10px 0;
+  padding: 8px 0;
   z-index: 12;
+  
 }
 nav .menu{
   max-width: 1250px;
@@ -22,7 +25,7 @@ nav .menu{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 .menu .logo a{
   text-decoration: none;
@@ -35,10 +38,10 @@ nav .menu{
 }
 .menu ul li{
   list-style: none;
-  margin-left: 7px;
+  margin-left: 55px;
+
 }
 .menu ul li:first-child{
-  margin-left: 0px;
 }
 .menu ul li a{
   text-decoration: none;
@@ -48,6 +51,8 @@ nav .menu{
   padding: 8px 15px;
   border-radius: 5px;
   transition: all 0.3s ease;
+  text-align: center;
+  justify-content: center;
 }
 .menu ul li a:hover{
   background: #fff;
@@ -79,11 +84,200 @@ nav .menu{
 }
 .center .title{
   color: #fff;
-  font-size: 55px;
+  font-size: 35px;
   font-weight: 500;
 }
 .center p{
   color: #FFA500;
   font-size: 22px;
   font-weight: 200;
+}
+
+.big-image {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url("pic1.jpeg");
+}
+
+
+.big-image2 {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url("pic2.jpeg");
+}
+
+.big-image3 {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url("pic3.jpeg");
+}
+
+.big-image5 {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url("pic5.jpeg");
+}
+
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.overlay h1 {
+  font-size: 45px;
+  letter-spacing: 0px;
+  margin: 0 0 5px;
+}
+
+.overlay h2 {
+    position: absolute;
+    font-size: 35px;
+    top: 300px;
+    letter-spacing: 0px;
+  }
+  
+.overlay p {
+    margin: 0;
+    font-size: 18px;
+    position: absolute;
+    top: 400px;
+}
+
+h1{
+    text-align: center;
+    font-size: 55px;
+    color: #fff;
+    -webkit-text-stroke: #FFA500 1px;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #FFA500;
+  color: black;
+}
+
+.next {
+  background-color: #FFA500;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+  border: 2px solid grey;
+}
+
+.row1 {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #FFA500;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: grey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
 }
