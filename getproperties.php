@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registration form</title>
         <link rel="stylesheet" href="connect.css">
+	<link rel="javascript" href="properties.js">
 </head>
 <body >
 <?php
@@ -46,7 +47,7 @@ echo "start";
     $rows = array();
     $ndx = 0;
     if ($result->num_rows > 0) {
-        while ($row = mysqli_fetch_array($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $rows[] = $row;  
             $ndx++;
         }
@@ -77,12 +78,29 @@ echo "start";
     }  
     echo "</table>";
     $conn->close();
-    echo "<script>";
-    echo "let prop_array = $rows;";
+    echo json_encode($rows);
+
 ?>
     
+<script type="text/javascript">
+var prop_array = <?php echo json_encode($rows); ?>;
 
-</script>
+let arr = prop_array;
 
+    for (var i = 0; i < arr.length; i++){
+          
+    }
+
+  for (var i = 0; i < arr.length; i++){
+    document.write("<br><br>array index: " + i);
+    var obj = arr[i];
+    for (var key in obj){
+        var value = obj[key];
+        document.write("<br> - " + key + ": " + value);
+    }
+}
+
+    </script>
+<P ID ='TEST'> test</p>
 </body>
 </html>
