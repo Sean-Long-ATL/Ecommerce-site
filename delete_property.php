@@ -16,12 +16,17 @@
     $table = 'properties';
 
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-         if (!isset($_POST['id'])) {
+
+         if (!(isset($_POST['id'])
+          && isset($_POST['owner']))) {
+
              print_r($_POST);
              die("post failed <br>");
          }
     }
     $id = $_POST['id'];
+    $owner = $_POST['owner'];
+
 
     echo "Prior to connect <br/>";
     $conn= mysqli_connect( $host, $user, $passw, $dbname);
@@ -50,6 +55,10 @@
     }
  
     $conn->close();
+    
+    header('Location: getproperties.php');
+    exit();
+   
 ?>
     <p> Go to this <a href="listproperties.php"> page,</a> to make sure the changes were done.</p>
 </body>

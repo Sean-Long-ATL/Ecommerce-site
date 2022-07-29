@@ -47,9 +47,9 @@
        echo "Count not connect to server<br/>";
            die ("Connection failed: " . $conn->connect_error);
     }
-    else {
-       echo "Connection established<br/>";
-    }
+    //else {
+    //   echo "Connection established<br/>";
+   // }
 
         // Check contents of db
     $sql= "UPDATE $table SET owner='$owner', name='$name', st_address='$st_address', city='$city', state='$state', zip='$zip', build_date='$build_date',";
@@ -57,15 +57,13 @@
 //    echo $sql . "<br/>";
     $result = mysqli_query($conn,$sql);
 
-    if ($result) {
-        echo "Update worked<br/>";
- 
-    }
-    else {
+    if (!$result) {
         echo "Update failed<br/>";
     }
  
     $conn->close();
+    header('Location: getproperties.php');
+    exit();
 ?>
     <p> Go to this <a href="listproperties.php"> page,</a> to make sure the changes were done.</p>
 </body>

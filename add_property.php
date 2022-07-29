@@ -51,7 +51,7 @@
             $num_bedrooms = $_POST['num_bedrooms'];
             $num_baths = $_POST['num_baths'];
             $price = $_POST['price'];
- 
+            echo "$price <br/>"; 
             //echo "Posted data extraction passed <br/>"; //debug
             $operation = 'INSERT';
             if (strlen($_POST['picture']) > 3) {
@@ -63,6 +63,9 @@
             $sql= "INSERT INTO $table (owner, name, st_address, city, state, zip, build_date, sq_footage, num_bedrooms, num_baths, price, picture)";
             $sql = $sql . " VALUES ($owner, '$name', '$st_address', '$city', '$state', $zip, '$build_date', ";
             $sql = $sql . "$sq_footage, $num_bedrooms, $num_baths, $price, '$picture') ";
+
+//            echo "$sql <br/>";
+
 
             $operation = 'INSERT';
 
@@ -99,6 +102,7 @@
              else {
                echo "<br/>One not Set: #baths, price<br/>";
              }
+             die("Died");
         }
 
         if ($query) {
@@ -106,6 +110,9 @@
         }
 
         $conn->close();
+        header('Location: getproperties.php');
+        exit();
+
     }
     else {
         echo 'FAILED: Reguest_method equal to POST and $_POST[submit] is  set';
