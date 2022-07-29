@@ -15,12 +15,10 @@
     $dbname = 'gmurray2';
     $table = 'properties';
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-         if (!(isset($_POST['id'])
-          && isset($_POST['owner']))) {
-             print_r($_POST);
-             die("post failed <br>");
-         }
+    if(!($_SERVER['REQUEST_METHOD'] == 'POST')) {
+    
+        print_r($_POST);
+        die("post failed <br>");
     }
     $id = $_POST['id'];
     $owner = $_POST['owner'];

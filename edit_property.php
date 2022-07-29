@@ -9,10 +9,14 @@
 <body >
 
 <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+//    print_r($_POST);
+//    echo '<br/>'.$_POST[ "id" ].'<br/>';
+    if($_SERVER['REQUEST_METHOD'] == 'POST'
+      //  && isset($_POST['submit'])
+      ) {
          if (isset($_POST['id'])) {
              $id = $_POST['id'];
-             //echo "post passed $id <br>";
+             echo "post passed $id <br>";
          }
          else {
              echo "post failed <br>";
@@ -20,7 +24,6 @@
              echo " <br>";
          }
     }
-
 
     $host = 'localhost';
     $user = 'gmurray2';
