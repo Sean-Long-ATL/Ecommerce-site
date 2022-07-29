@@ -16,54 +16,47 @@
     $table = 'properties';
 
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-         if (isset($_POST['id'])) {
-             $id = $_POST['id'];
-             echo "post passed $id <br>";
-         }
-         else {
-             echo "post failed <br>";
+         if (!(isset($_POST['id'])
+          && isset($_POST['owner']))) {
              print_r($_POST);
-             echo " <br>";
+             die("post failed <br>");
          }
     }
     $id = $_POST['id'];
-    $owner =  $_POST['owner'];
-    $name = $_POST['name'];
-    $st_address = $_POST['st_address'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $zip = $_POST['zip'];
-    $build_date = $_POST['build_date'];
-    $sq_footage = $_POST['sq_footage'];
-    $num_bedrooms = $_POST['num_bedrooms'];
-    $num_baths = $_POST['num_baths'];
-    $price = $_POST['price'];
-    $picture = $_POST['picture'];
+    $owner = $_POST['owner'];
 
-
+    echo "Prior to connect <br/>";
     $conn= mysqli_connect( $host, $user, $passw, $dbname);
 
     if ($conn->connect_error) {
        echo "Count not connect to server<br/>";
            die ("Connection failed: " . $conn->connect_error);
     }
-    //else {
-    //   echo "Connection established<br/>";
-   // }
+    else {
+       echo "Connection established<br/>";
+    }
 
         // Check contents of db
-    $sql= "UPDATE $table SET owner='$owner', name='$name', st_address='$st_address', city='$city', state='$state', zip='$zip', build_date='$build_date',";
-    $sql= $sql . " sq_footage='$sq_footage', num_bedrooms='$num_bedrooms', num_baths='$num_baths', price='$price', picture='$picture' WHERE $id = id ";
+    $sql= "DELETE from $table  WHERE $id = id ";
 //    echo $sql . "<br/>";
+    echo "Prior to delete <br/>";
+    echo "$sql <br/>";
     $result = mysqli_query($conn,$sql);
 
-    if (!$result) {
-        echo "Update failed<br/>";
+    if ($result) {
+        echo "Delete worked<br/>";
+ 
+    }
+    else {
+        echo "Delete failed<br/>";
     }
  
     $conn->close();
+    
     header('Location: getproperties.php');
     exit();
+    
+
 ?>
     <p> Go to this <a href="listproperties.php"> page,</a> to make sure the changes were done.</p>
 </body>

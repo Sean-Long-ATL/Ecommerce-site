@@ -9,7 +9,18 @@
 </head>
 <body >
 <?php
-    $user_id = 1;  // Should be set by cookie or POST data
+    if (!isset($_COOKIE['user_number'])) {
+        console.log("getProperties:Cookie property id is not set");
+        die("Session read failure");
+//	header('Location: sellerDashboard.html');
+//        exit();
+    }
+
+//    print_r($_COOKIE);
+//    echo "<br/>";
+//    $owner = 1;   
+    $owner = $_COOKIE['user_number'].intval();
+//    $user_number = 1;  // Should be set by cookie or POST data
 
     $host = 'localhost';
     $user = 'gmurray2';
@@ -22,69 +33,71 @@
        echo "Count not connect to server<br/>";
            die ("Connection failed: " . $conn->connect_error);
     }
-echo "start";
-//    else {
-//       echo "Connection established<br/>";
-//    }
 
         // Check contents of db
     //$sql= "SELECT * FROM  $table WHERE ";
     $tu = $u_table;
     $td = $d_table;    
 
-    $sql = "SELECT * from $d_table WHERE owner = $user_id ";
-
-//    $sql= "SELECT ".$td.".id, ".$td.".owner, ".$td.".name, ".$td.".st_address, ".$td.".city, ".$td.".state, ";
-//    $sql= $sql .$td.".zip, ".$td.".build_date, ".$td.".sq_footage, ".$td.".num_bedrooms, ".$td.".price, ".$td.".picture ";
-//    $sql = "$sql FROM  $td  JOIN  $tu WHERE ".$td.".owner = $user_id";
-//    $sql = "$sql FROM  $td  JOIN  $tu WHERE ".$td.".owner = ".$tu.".user_number and ".$tu.".user_name = $user_id";
+    $sql = "SELECT * from $d_table WHERE owner = $owner ";
 
 
-    echo $sql . "<br/>";
+//    echo $sql . "<br/>";
     $result = mysqli_query($conn,$sql);
     //echo "This table for debugging <br/>";
     
     $rows = array();
     $ndx = 0;
     if ($result->num_rows > 0) {
-        while ($row = mysqli_fetch_array($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $rows[] = $row;  
             $ndx++;
         }
     }
-//    else {
-//        echo "Select return 0 rows";
-//    }
 
 
     // Debugging output
 
-    echo "<table><tr>";
-    foreach ($rows[0] as $key => $value) {
-       if (!is_numeric($key)) {
-           echo "<th>| $key </th>";
-       }
-    }
-    echo "</tr>";
+//    echo "<table><tr>";
+//    foreach ($rows[0] as $key => $value) {
+//       if (!is_numeric($key)) {
+//           echo "<th>| $key </th>";
+//       }
+//    }
+//    echo "</tr>";
     
-    for ($n=0; $n< $ndx; $n++) {
-       echo "<tr>";
-       foreach ($rows[$n] as $key => $value) {
-          if (!is_numeric($key)) {
-             echo "<td> $value </td>";
-          }
-       }
-       echo "</tr>";
-    }  
-    echo "</table>";
+//    for ($n=0; $n< $ndx; $n++) {
+//       echo "<tr>";
+//       foreach ($rows[$n] as $key => $value) {
+//          if (!is_numeric($key)) {
+//             echo "<td> $value </td>";
+//          }
+//       }
+//       echo "</tr>";
+//    }  
+//    echo "</table>";
+
     $conn->close();
-    echo "<script>";
-    echo "</script>";
+//    echo json_encode($rows);
+
+//	header('Location: sellerDashboard.html');
+//        exit();
 ?>
     
 <script type="text/javascript">
-   var prop_array = <?php echo json_encode($rows); ?>;
-</script>
+var prop_array = <?php echo json_encode($rows); ?>;
 
+let arr = prop_array;
+
+  for (var i = 0; i < arr.length; i++){
+    document.write("<br><br>array index: " + i);
+    var obj = arr[i];
+    for (var key in obj){
+        var value = obj[key];
+        document.write("<br> - " + key + ": " + value);
+    }
+}
+
+    </script>
 </body>
 </html>

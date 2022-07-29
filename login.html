@@ -7,6 +7,34 @@
         <link rel="stylesheet" href="connect.css">
 </head>
 <body >
+    <script type="text/javascript">
+        function getCookie(cookie_name) {
+           let allcookies = document.cookie;
+
+           // Get all the cookies pairs in an array
+           let cookiearray = allcookies.split(';');
+           let split;
+
+           // Now take key value pair out of this array
+           for(var i=0; i<cookiearray.length; i++) {
+              split = cookiearray[i].split('=');
+              name = split[0].replaceAll(' ','');   // The name can have a leading space
+              value = split[1];
+              if (split.length === 2) {
+                 if (cookie_name === name  ) {
+
+                    //document.write(name + " equal to "+cookie_name+" so returning "+value+"<br/>");
+                    return value;
+                 }
+              }
+           }
+        }
+        let theCookie = getCookie('error');    // Grab the value of the cookie with the name user_name
+        if (theCookie != undefined &&
+            theCookie.length > 0) {
+            alert("Username/password mismatch. Login failure.");
+        }
+    </script>
     <h1>Bargain Basement Real Estate Connections</h1>
     <div><h2>Login</h2>
       <form action='conn2.php' method="POST">
