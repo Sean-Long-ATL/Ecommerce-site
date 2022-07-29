@@ -16,10 +16,11 @@
 //        exit();
     }
 
-//    print_r($_COOKIE);  // Debug
-//    echo "<br/>";       // Debug
-
+//    print_r($_COOKIE);
+//    echo "<br/>";
+//    $owner = 1;   
     $owner = $_COOKIE['user_number'].intval();
+//    $user_number = 1;  // Should be set by cookie or POST data
 
     $host = 'localhost';
     $user = 'gmurray2';
@@ -77,7 +78,10 @@
 //    echo "</table>";
 
     $conn->close();
+//    echo json_encode($rows);
 
+//	header('Location: sellerDashboard.html');
+//        exit();
 ?>
     
 <script type="text/javascript">
@@ -94,7 +98,6 @@ let arr = prop_array;
     }
 }
 
-</script>
-
+    </script>
 </body>
 </html>
