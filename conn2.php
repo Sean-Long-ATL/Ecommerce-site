@@ -52,8 +52,12 @@
 
             if ($pwd == $password) {
                echo "Login successful <br/>";
+
                setcookie("user_number", $user_number, time()+240*60*60);
                header('Location: getproperties.php');
+
+               setcookie($user_name);
+               header('Location: https://codd.cs.gsu.edu/~gmurray2/PW/03/sellerDashboard.html');
                exit();
             }
             else {
