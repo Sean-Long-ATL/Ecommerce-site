@@ -4,9 +4,10 @@
         <meta charset = "UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registration form</title>
-        <link rel="stylesheet" href="connect.css">
+        <link rel="stylesheet" href="user.css">
+
 </head>
-<body >
+<body>
     <script type="text/javascript">
         function getCookie(cookie_name) {
            let allcookies = document.cookie;
@@ -35,21 +36,51 @@
             alert("Username/password mismatch. Login failure.");
         }
     </script>
-    <h1>Bargain Basement Real Estate Connections</h1>
-    <div><h2>Login</h2>
+   <h1>Bargain Basement Real Estate Connections</h1>
+   </br> 
+   <img src="ri.png" alt="icon" width="50px" height="50px">          
+   <div>
+      <div class="overlay">
       <form action='conn2.php' method="POST">
-         <label for="user_name">UserName:</label><br/>
-         <input type='text' name='user_name' id="user_name" required/> <br/><br/>
-         <label for="password">Password:</label><br/>
-         <input type='password' name='password' id="password" required/> <br/><br/>
-<!--        <div class="form-check">
-            <input class="form-check-input" name="update" type="checkbox" value="yes" id="update">
-            <label class="form-check-label" for="update">
-                Update
-            </label> -->
-         </div>
-         <input type='submit' name='submit' id="submit">
+          <div class="con">
+              <header class="head-form">
+                  <h2>LOGIN</h2>
+                  </br> 
+                  <img src="loginn.png" alt="Girl in a jacket" width="150px" height="80px">
+                  <p>Welcome Back.</p>
+
+              </header>
+               <br>
+               <div class="field-set">
+                 
+                  <span class="input-item">
+                     <i class="fa fa-user-circle"></i>
+                  </span>
+                  <input class="form-input" id="user_name" name="user_name" type="text" placeholder="👤 Username" required>
+                  <br>
+                 
+                  <span class="input-item">
+                     <i class="fa fa-key"></i>
+                  </span>
+                  <input class="form-input" type="password" placeholder="🗝 Password" id="password"  name="password" required>
+                 
+ <!--                 <span>
+                     <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
+                  </span>
+  -->               
+                 
+                  <br>
+                  <input type='submit' id='submit' name='submit' class="log-in"> 
+               </div>
+              
+      
+               <p>New Member? <a href="register.html">  Sign-up here</a></p>
+
+          </div>
+              
       </form>
-    </div>
+      </div> 
+        
+    
 </body>
 </html>

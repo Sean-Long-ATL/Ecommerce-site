@@ -44,6 +44,11 @@
                 $phone = $_POST['phone'];
                 $password = MD5($_POST['password']);
                 $cpassword = MD5($_POST['cpassword']);
+                if ($password != $cpassword) {
+                    setcookie('error', 'error', time()+15);
+                    header("Location: register.html");
+                    exit();
+                }
                 
 //               Update 
 //            if ($_POST['update'] == 'yes') {
@@ -83,7 +88,7 @@
             }
         }
 
-        header("Location: login.html");
+	header("Location: login.html");
         exit();
 
         if ($query) {
