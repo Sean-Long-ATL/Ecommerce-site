@@ -1,2 +1,0 @@
-
-   let prop_array;
