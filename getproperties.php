@@ -3,12 +3,12 @@
 <head>
         <meta charset = "UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registration form</title>
-        <link rel="stylesheet" href="connect.css">
+        <title>Seller Dashboard</title>
+        <link rel="stylesheet" href="card.css">
+        <!--<link rel="stylesheet" href="connect.css">!-->
 	<link rel="javascript" href="properties.js">
-</head>
-<body >
-<?php
+
+    <?php
     if (!isset($_COOKIE['user_number'])) {
         console.log("getProperties:Cookie property id is not set");
         die("Session read failure");
@@ -84,9 +84,96 @@
 //        exit();
 ?>
     
+
+
 <script type="text/javascript">
 var prop_array = <?php echo json_encode($rows); ?>;
+function drawPicture(){
+            for (var i = 0; i < prop_array.length; i++){
 
+                let card = document.createElement("div");
+                card.className ="card" + i;
+                document.body.appendChild(card);
+
+                let image = document.createElement("img");
+                image.src = prop_array[i].picture;
+                image.id = "img" + i;
+                card.appendChild(image); 
+
+                let container = document.createElement("div");
+                card.className ="container" + i;
+                card.appendChild(container);
+
+                
+                let editForm = document.createElement("form");
+                editForm.method = "post";
+                editForm.action = "edit_property.php"
+                container.appendChild(editForm);
+
+                let editButton = document.createElement("button");
+                editButton.type = "submit";
+                editButton.value = i;
+                editButton.innerHTML="edit";
+                editForm.appendChild(editButton);
+
+                let deleteForm = document.createElement("form");
+                deleteForm.method = "post";
+                deleteForm.action = "delete_property.php"
+                container.appendChild(deleteForm);
+
+                let deleteButton = document.createElement("button");
+                deleteButton.type = "submit";
+                deleteButton.value = i;
+                deleteButton.innerHTML="delete";
+                deleteForm.appendChild(deleteButton);
+
+                window.onload = function () {
+                var listElement = document.getElementsByTagName('img');
+                for (i=0;i<listElement.length;i++) {
+                    listElement[i].addEventListener('click',(function (i) {
+                    return function () {
+                        drawCard(i);
+                        };
+                        }(i)));
+                    }
+                }
+            }
+
+        }
+        
+       
+        function drawCard(i){   
+            deleteCard();
+            //list of properties: id, owner, name, st_address, city, state, zip, build_date, sq_footage, num_bedrooms, num_baths, price, picture
+            let propCard = document.createElement("div");
+            propCard.id ="propCard";
+            document.body.appendChild(propCard); //this needs to change later for formatting 
+            
+            let table = document.createElement("table");
+            propCard.appendChild(table);
+
+            var obj = prop_array[i];
+            for (var key in obj){
+                if( key != "id" && key != "owner" && key != "picture"){
+                    let row =  document.createElement("tr");
+                    table.appendChild(row);
+
+                    let cell = document.createElement("td");
+                    cell.innerHTML = key;
+                    row.appendChild(cell);
+
+                    let cell2 = document.createElement("td");
+                    cell2.innerHTML = obj[key];
+                    row.appendChild(cell2);
+                    }
+                }
+        }   
+        function deleteCard(){
+            if (document.contains(document.getElementById("propCard"))) {
+            document.getElementById("propCard").remove();
+            }
+        }
+/*
 let arr = prop_array;
 
   if (arr.length < 1) {
@@ -100,7 +187,11 @@ let arr = prop_array;
         document.write("<br> - " + key + ": " + value);
     }
 }
+*/
 
     </script>
+</head>
+<body >
+    <script> drawPicture(); </script>
 </body>
 </html>
