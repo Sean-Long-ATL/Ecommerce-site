@@ -14,6 +14,7 @@
     $passw = 'gmurray2';
     $dbname = 'gmurray2';
     $table = 'users';
+    print_r($_POST); echo "<br/>";
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         $conn= mysqli_connect( $host, $user, $passw, $dbname);
         if ($conn->connect_error) {
@@ -52,24 +53,16 @@
 
             if ($pwd == $password) {
                echo "Login successful <br/>";
-               setcookie("user_number", $user_number, time()+240*60*60);
+               setcookie("user_number",$user_number, time()+240*60*60);
                header('Location: getproperties.php');
                exit();
             }
             else {
-               echo "Login unsuccessful <br/>";
-//               $dom = new DOMDocument(1.0, 'iso-8859-1');
-//               $element = $dom->getElementById('failedLoginMsg');
-//               if ($element) {
-//                  $node = $dom->createTextNode("<p>Login unsuccessful, user name and password don't match</p>");
-//                  $element->appendChild($node);
-//               }
-//               else {
-//                  console.log("element null");
-//               }
+	       echo "Login unsuccessful <br/>";
                setcookie('error', 'error', time()+15);
                header('Location: login.html');
                exit();
+
             }
 
             $conn->close();

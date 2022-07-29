@@ -89,6 +89,9 @@ var prop_array = <?php echo json_encode($rows); ?>;
 
 let arr = prop_array;
 
+  if (arr.length < 1) {
+     document.write("no properties owned by you");
+  }
   for (var i = 0; i < arr.length; i++){
     document.write("<br><br>array index: " + i);
     var obj = arr[i];
