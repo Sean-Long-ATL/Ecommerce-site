@@ -59,7 +59,7 @@
             }
             else {
 	       echo "Login unsuccessful <br/>";
-               setcookie('error', 'error', time()+15);
+               setcookie('error', 'error', time()+1);
                header('Location: login.html');
                exit();
 
