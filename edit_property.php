@@ -18,7 +18,7 @@
       ) {
          if (isset($_POST['id'])) {
              $id = $_POST['id'];
-             //echo "post passed $id <br>";
+             echo "post passed $id <br>";
          }
          else {
              echo "post failed <br>";

@@ -88,14 +88,13 @@
 
 <script type="text/javascript">
 var prop_array = <?php echo json_encode($rows); ?>;
-function drawPicture() {
 
+function drawPicture() {
 
             let title = document.createElement("h1");
             title.innerHTML = "Sellers Dashboard";
             document.body.appendChild(title);
-
-
+            
             for (var i = 0; i < prop_array.length; i++){
 
                 let card = document.createElement("div");
@@ -117,6 +116,7 @@ function drawPicture() {
                 editForm.action = "edit_property.php";
                 container.appendChild(editForm);
             
+
                 let editInput = document.createElement("input");
                 editInput.type="hidden";
                 editInput.id="id";
@@ -133,11 +133,12 @@ function drawPicture() {
                 editButton.innerHTML="edit";
                 editForm.appendChild(editButton);
 
+
                 let deleteForm = document.createElement("form");
                 deleteForm.method = "POST";
                 deleteForm.action = "delete_property.php"
                 container.appendChild(deleteForm);
-               
+              
 
                 let deleteInput = document.createElement("input");
                 deleteInput.type="hidden";
@@ -145,6 +146,7 @@ function drawPicture() {
                 deleteInput.name="id";
                 deleteInput.value = prop_array[i].id;  
                 deleteForm.appendChild(deleteInput);
+
 
                 let deleteButton = document.createElement("button");
                 deleteButton.type = "submit";
@@ -166,12 +168,14 @@ function drawPicture() {
                 }
             }
 
+
             foot = document.createElement("footer");
             document.body.appendChild( foot);
             let anchor = document.createElement("a");
             anchor.setAttribute('href','add_property.html');
             anchor.innerHTML= "Add a Property";
             foot.appendChild(anchor);
+
 
         }
         
