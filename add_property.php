@@ -39,6 +39,16 @@
              && isset($_POST['price'])) {
 
 
+         //  echo $_POST['owner']."<br/>";
+         //  echo $_POST['name']."<br/>";
+         //  echo $_POST['st_address']."<br/>";
+         //  echo $_POST['city']."<br/>";
+
+
+
+
+
+
             //echo "Post passed <br/>"; //debug
             $owner = $_POST['owner'];
             $name = $_POST['name'];
@@ -66,7 +76,7 @@
 
             $operation = 'INSERT';
 
-         
+            console.log($sql); 
             if (strlen($sql)> 1) {
                $query = mysqli_query($conn,$sql);
             }
@@ -75,36 +85,65 @@
             }
 
             if (!$query) {
-                echo 'Error Occurred with ' .$operation .' <br/> ';
-                echo $sql. '<br/>';
+                console.log( 'Error Occurred with ' .$operation .' <br/> ');
+                console.log( $sql. '<br/>');
             }
         }
         else {
-           if (   
-                isset($_POST['build_date']) 
-             && isset($_POST['sq_footage']) 
-             && isset($_POST['num_bedrooms']) ) {
-               echo "<br/>Set: build_date, sq_foot, num_bedrooms<br/>";
-             }
-             else {
-               echo "<br/>One of these not Set: build_date, sq_foot, num_bedrooms<br/>";
+           echo $_POST['owner']."<br/>";
+           echo $_POST['name']."<br/>";
+           echo $_POST['st_address']."<br/>";
+           echo $_POST['city']."<br/>";
+           echo $_POST['state']."<br/>";
+           echo $_POST['zip']."<br/>";
+           echo $_POST['build_date']."<br/>";
+           echo $_POST['sq_footage']."<br/>";
+           echo $_POST['num_bedrooms']."<br/>";
+           echo $_POST['num_baths']."<br/>";
+           echo $_POST['price']."<br/>";
+           echo $_POST['picture']."<br/>";
+           if (
+              isset($_POST['owner'])) {
+              echo "<br/>Set: owner<br/>";
+           }
+           else {
+              echo "<br/>Set: owner<br/>";
+           }
+           if ( isset($_POST['name'])
+           && isset($_POST['st_address'])
+           ) {
+              echo "<br/>Set:  name, st_address<br/>";
+           }
+           else {
+              echo "<br/>Not Set: owner, name, st_address<br/>";
+           }
+                
 
-             }
-             
-             if ( 
-                isset($_POST['num_baths'])
-             && isset($_POST['price'])) {
-               echo "<br/>Set: #baths, price<br/>";
-             }
-             else {
-               echo "<br/>One not Set: #baths, price<br/>";
-             }
-	     die("Died");
+           if (   
+              isset($_POST['build_date']) 
+           && isset($_POST['sq_footage']) 
+           && isset($_POST['num_bedrooms']) ) {
+             echo "<br/>Set: build_date, sq_foot, num_bedrooms<br/>";
+           }
+           else {
+             echo "<br/>One of these not Set: build_date, sq_foot, num_bedrooms<br/>";
+
+           }
+           
+           if ( 
+              isset($_POST['num_baths'])
+           && isset($_POST['price'])) {
+             echo "<br/>Set: #baths, price<br/>";
+           }
+           else {
+             echo "<br/>One not Set: #baths, price<br/>";
+           }
+	   die("Died");
 	}
 
-        if ($query) {
-            echo "To ensure data got into table go to <a href='listproperties.php'>here</a> <br/>";
-        }
+//        if ($query) {
+//            echo "To ensure data got into table go to <a href='listproperties.php'>here</a> <br/>";
+//        }
 
 	$conn->close();
         header('Location: getproperties.php');

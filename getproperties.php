@@ -88,9 +88,13 @@
 
 <script type="text/javascript">
 var prop_array = <?php echo json_encode($rows); ?>;
-function drawPicture(){
 
+function drawPicture() {
 
+            let title = document.createElement("h1");
+            title.innerHTML = "Sellers Dashboard";
+            document.body.appendChild(title);
+            
             for (var i = 0; i < prop_array.length; i++){
 
                 let card = document.createElement("div");
@@ -112,12 +116,13 @@ function drawPicture(){
                 editForm.action = "edit_property.php";
                 container.appendChild(editForm);
             
-                let input = document.createElement("input");
-                input.type="hidden";
-                input.id="id";
-                input.name="id";
-                input.value = prop_array[i].id;  
-                editForm.appendChild(input);
+
+                let editInput = document.createElement("input");
+                editInput.type="hidden";
+                editInput.id="id";
+                editInput.name="id";
+                editInput.value = prop_array[i].id;  
+                editForm.appendChild(editInput);
 
                 //<input type="hidden" id="custId" name="custId" value="3487">
 
@@ -128,12 +133,21 @@ function drawPicture(){
                 editButton.innerHTML="edit";
                 editForm.appendChild(editButton);
 
+
                 let deleteForm = document.createElement("form");
                 deleteForm.method = "POST";
                 deleteForm.action = "delete_property.php"
                 container.appendChild(deleteForm);
-                deleteForm.appendChild(input);
-                
+              
+
+                let deleteInput = document.createElement("input");
+                deleteInput.type="hidden";
+                deleteInput.id="id";
+                deleteInput.name="id";
+                deleteInput.value = prop_array[i].id;  
+                deleteForm.appendChild(deleteInput);
+
+
                 let deleteButton = document.createElement("button");
                 deleteButton.type = "submit";
                 deleteButton.value = prop_array[i].id;
@@ -153,6 +167,15 @@ function drawPicture(){
                     }
                 }
             }
+
+
+            foot = document.createElement("footer");
+            document.body.appendChild( foot);
+            let anchor = document.createElement("a");
+            anchor.setAttribute('href','add_property.html');
+            anchor.innerHTML= "Add a Property";
+            foot.appendChild(anchor);
+
 
         }
         

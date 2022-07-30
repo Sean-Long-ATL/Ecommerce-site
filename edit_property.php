@@ -4,9 +4,11 @@
         <meta charset = "UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>update form</title>
-        <link rel="stylesheet" href="connect.css">
+        <link rel="stylesheet" href="user.css">
 </head>
 <body >
+    <h1>Bargain Basement Real Estate Connections</h1>
+    <h2>Edit Property Information</h2>
 
 <?php
 //    print_r($_POST);
