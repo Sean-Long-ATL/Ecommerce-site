@@ -4,15 +4,48 @@
         <meta charset = "UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Property Entry form</title>
-        <link rel="stylesheet" href="connect.css">
+        <link rel="stylesheet" href="user.css">
 </head>
 <body >
     <h1>Bargain Basement Real Estate Connections</h1>
     <div><h2>Add Your Property</h2>
       <form action='add_property.php' method="POST">
+        <input type="text" name="owner" id="owner"  hidden /> 
+
+    <script type="text/javascript">
+        function getCookie(cookie_name) {
+           let allcookies = document.cookie;
+
+           // Get all the cookies pairs in an array
+           let cookiearray = allcookies.split(';');
+           let split;
+
+           // Now take key value pair out of this array
+           for(var i=0; i<cookiearray.length; i++) {
+              split = cookiearray[i].split('=');
+              name = split[0].replaceAll(' ','');   // The name can have a leading space
+              value = split[1];
+              if (split.length === 2) {
+                 if (cookie_name === name  ) {
+
+                    //document.write(name + " equal to "+cookie_name+" so returning "+value+"<br/>");
+                    return value;
+                 }
+              }
+           }
+        }
+        let user_number = getCookie('user_number');    // Grab the value of the cookie with the name user_name
+        //alert(user_number);
+        if (user_number == undefined ||
+            user_number.length < 1) {
+            alert("User id not set in cookie. add property failure.");
+        }
+        console.log(user_number);
+        let ownElem = document.getElementById("owner");
+        ownElem.defaultValue = user_number.toString();
+    </script>
     
-         <label for="owner">Your User ID:</label><br/>
-         <input type='text' name='owner' id="owner" required/> <br/><br/>
+        <!-- <label for="owner">Your User ID:</label><br/> -->
          <label for="name">Property Name:</label><br/>
          <input type='text' name='name' id="name" required/> <br/><br/>
          <label for="st_address">Street Address:</label><br/>
@@ -33,8 +66,15 @@
          <input type='text' name='num_baths' id="num_baths" required/> <br/><br/>
          <label for="price">Price:</label><br/>
          <input type='text' name='price' id="price" required/> <br/><br/>
-         <label for="picture">Picture:  optional</label><br/>
-         <input type='text' name='picture' id="picture" /> <br/><br/>
+         <!-- <label for="picture">Picture:  optional</label><br/> -->
+         <input type='text' name='picture' id='picture' hidden /> <br/><br/>
+         <script type="text/javascript">
+            const rndInt = Math.floor(Math.random() * 13) + 1;
+            let pElem = document.getElementById("picture");
+            let picName = "img"+rndInt.toString()+".jpg";
+            pElem.defaultValue = picName;
+            //alert(picName);
+         </script>
 	 <input type='submit' name='submit' id="submit">
       </form>
     </div>
