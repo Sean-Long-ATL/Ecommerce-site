@@ -3,7 +3,9 @@ Ecommerce site built on PHP designed to allow fro trading of properties amongst 
    
 
 
-Documetation below
+Documetation below:
+
+
 README for DB manipulation files
 
 
