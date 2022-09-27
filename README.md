@@ -1,6 +1,10 @@
 # Ecommerce-site
+Ecommerce site built on PHP designed to allow fro trading of properties amongst users
+   
 
-   README for DB manipulation files
+
+Documetation below
+README for DB manipulation files
 
 
 $$Login.html - has form for logging into the system. 
